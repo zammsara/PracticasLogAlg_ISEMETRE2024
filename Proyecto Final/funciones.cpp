@@ -10,11 +10,11 @@ int obtenerReg(int CodigoPrestamo);
 void registroPrestamos(INFORMACION * c);
 void editar(INFORMACION *c, int CodigoPrestamo);
 void eliminar(int CodigoPrestamo);
-void mostrarPrestamos;
+void mostrarPrestamos();
 INFORMACION buscar(int CodigoPrestamo);
 void solicitarDatos();
-void buscarxNumCedula;
-void editarRegistro;
+void buscarxCodigoPrestamo();
+void editarRegistro();
 int menu();
 int principal();
 
@@ -75,6 +75,9 @@ void principal(){
             case 1:
                 solicitarDatos();
                 break;
+            case 4:
+                buscarxCodigoPrestamo();
+                break;
         }
 
     } while (op != 6);
@@ -106,4 +109,32 @@ void solicitarDatos(){
     scanf(" %[^\n]", registros.CedulaFiador);
     registroPrestamos(&registros);
     cout << "Registro de prestamo guardado....\n";
+}
+
+void buscarxCodigoPrestamo(){
+    int CodigoPrestamo;
+    cout << "BUSQUEDA DE REGISTRO" <<endl;
+    cout << "Ingrese el codigo de prestamo: ";
+    cin >> CodigoPrestamo;
+    if(obtenerReg(CodigoPrestamo)== -1){
+        cout << "Registro no encontrado...\n" << endl;
+        return;
+    }
+    INFORMACION c;
+    c = buscar(CodigoPrestamo);
+    showReg(c);
+}
+
+showReg(INFORMACION &c){
+    cout << "────────────────────────────────────────────────────────────────────────────\n";
+    cout << c.NombreCompleto << endl;
+    cout << c.NumeroCedula << endl;
+    cout << c.NumeroTelefonico << endl;
+    cout << c.CantPrestada << endl;
+    cout << c.FechaPrestamo << endl;
+    cout << c.PagoFinal << endl;
+    cout << c.Intereses << endl;
+    cout << c.NombreFiador << endl;
+    cout << c.CedulaFiador << endl;
+    cout << "────────────────────────────────────────────────────────────────────────────\n";
 }
