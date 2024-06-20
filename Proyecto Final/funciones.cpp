@@ -3,6 +3,8 @@
 #include "variables.h"
 #include <locale.h>
 
+using namespace std;
+
 INFORMACION registros[MAX_REG];
 int pos = 0;
 
@@ -14,9 +16,10 @@ void mostrarPrestamos();
 INFORMACION buscar(int CodigoPrestamo);
 void solicitarDatos();
 void buscarxCodigoPrestamo();
+void showReg(INFORMACION * c);
 void editarRegistro();
 int menu();
-int principal();
+void principal();
 
 
 void registroPrestamos(INFORMACION * c){
@@ -25,17 +28,19 @@ void registroPrestamos(INFORMACION * c){
 }
 
 
-INFORMACION buscar(int CodigoPrestamo){
-    for(int i = 0; i < pos; i++){
-    }
+INFORMACION buscar(int CodigoPrestamo)
+{
+    for(int i = 0; i < pos; i++)
+    {
         if(CodigoPrestamo == registros[i].CodigoPrestamo)
         {
             return registros[i];
         }
         INFORMACION c;
         return c;
-     
+    
     }
+}
 
 int obtenerReg(int CodigoPrestamo){
     for (int i = 0; i < pos; i++)
@@ -52,20 +57,21 @@ int menu(){
     setlocale(LC_ALL, "spanish");
     int op;
     cout << "Bienvenido al sistema de prestamos\n";
-    cout << "────────────────────────────────────────────────────────────────────────────\n";
+    cout << "-------------------------------------------------------------------------\n";
     cout << "1. Registrar un nuevo prestamo\n";
     cout << "2. Editar registro\n";
     cout << "3. Eliminar registro\n";
     cout << "4. Buscar registro\n";
     cout << "5. Mostrar los registros\n";
     cout << "6. Salir\n ";
-    cout << "────────────────────────────────────────────────────────────────────────────\n";
+    cout << "-------------------------------------------------------------------------\n";
     cout << "Digite la opcion: ";
     cin >> op;
     return op;
 }
 
-void principal(){
+void principal()
+{
     int op;
     do
     {
@@ -111,8 +117,11 @@ void solicitarDatos(){
     cout << "Registro de prestamo guardado....\n";
 }
 
-void buscarxCodigoPrestamo(){
+void buscarxCodigoPrestamo()
+{
     int CodigoPrestamo;
+    void showReg(INFORMACION &c);
+
     cout << "BUSQUEDA DE REGISTRO" <<endl;
     cout << "Ingrese el codigo de prestamo: ";
     cin >> CodigoPrestamo;
@@ -125,8 +134,8 @@ void buscarxCodigoPrestamo(){
     showReg(c);
 }
 
-showReg(INFORMACION &c){
-    cout << "────────────────────────────────────────────────────────────────────────────\n";
+void showReg(INFORMACION &c){
+    cout << "-------------------------------------------------------------------------\n";
     cout << c.NombreCompleto << endl;
     cout << c.NumeroCedula << endl;
     cout << c.NumeroTelefonico << endl;
@@ -136,5 +145,5 @@ showReg(INFORMACION &c){
     cout << c.Intereses << endl;
     cout << c.NombreFiador << endl;
     cout << c.CedulaFiador << endl;
-    cout << "────────────────────────────────────────────────────────────────────────────\n";
+    cout << "-------------------------------------------------------------------------\n";
 }
