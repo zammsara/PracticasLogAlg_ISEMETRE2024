@@ -36,11 +36,11 @@ INFORMACION buscar(int CodigoPrestamo)
         {
             return registros[i];
         }
-        INFORMACION c;
-        return c;
-    
     }
+    INFORMACION c;
+    return c;
 }
+
 
 int obtenerReg(int CodigoPrestamo){
     for (int i = 0; i < pos; i++)
@@ -129,7 +129,7 @@ void buscarxCodigoPrestamo()
         cout << "Registro no encontrado...\n" << endl;
         return;
     }
-    INFORMACION c;
+    INFORMACION c{};
     c = buscar(CodigoPrestamo);
     showReg(c);
 }
