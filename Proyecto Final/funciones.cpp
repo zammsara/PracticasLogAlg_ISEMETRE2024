@@ -3,6 +3,9 @@
 #include "variables.h"
 #include <locale.h>
 
+#define ANSI_COLOR_WH_BACK "\x1b[47m"
+#define ANSI_COLOR_RESET "\x1b[0m"
+
 using namespace std;
 
 INFORMACION registros[MAX_REG];
@@ -56,7 +59,7 @@ int obtenerReg(int CodigoPrestamo){
 int menu(){
     setlocale(LC_ALL, "spanish");
     int op;
-    cout << "Bienvenido al sistema de prestamos\n";
+    cout << ANSI_COLOR_WH_BACK << "Bienvenido al sistema de prestamos"  << ANSI_COLOR_RESET<<endl;
     cout << "-------------------------------------------------------------------------\n";
     cout << "1. Registrar un nuevo prestamo\n";
     cout << "2. Editar registro\n";
@@ -92,7 +95,9 @@ void principal()
 
 void solicitarDatos(){
     INFORMACION registros;
-    cout << "Digite el código del prestamo: ";
+    cout << "-------------------------------------------------------------------------\n";
+    cout << ANSI_COLOR_WH_BACK << "Registro de prestamo"  << ANSI_COLOR_RESET<<endl;
+    cout << "Digite el codigo del prestamo: ";
     cin >> registros.CodigoPrestamo;
     cout << "Digite el nombre del cliente: ";
     scanf(" %[^\n]", registros.NombreCompleto);
@@ -122,7 +127,8 @@ void buscarxCodigoPrestamo()
     int CodigoPrestamo;
     void showReg(INFORMACION &c);
 
-    cout << "BUSQUEDA DE REGISTRO" <<endl;
+    cout << "-------------------------------------------------------------------------\n";
+    cout << ANSI_COLOR_WH_BACK << "Busqueda de registro"  << ANSI_COLOR_RESET<<endl;
     cout << "Ingrese el codigo de prestamo: ";
     cin >> CodigoPrestamo;
     if(obtenerReg(CodigoPrestamo)== -1){
